@@ -1,4 +1,4 @@
-import { auth } from "./firebase-config.js";
+import { auth, generateAndUploadKeyPair } from "./firebase-config.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -11,7 +11,8 @@ import {
   setDoc,
   doc,
   getDocs,
-  collection
+  collection,
+  getDoc
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // Initialize Firestore
@@ -70,18 +71,17 @@ logoutBtn.onclick = () => {
 };
 
 // Handle authentication state changes
-// Handle authentication state changes
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     try {
-      const uid = user.uid;
 
+      const uid = user.uid;
+  
       // Generate and upload the key pair if not already done
       const userDoc = await getDoc(doc(db, "users", uid));
       if (!userDoc.exists() || !userDoc.data().publicKey) {
-        await generateAndUploadKeyPair(uid);
+        generateAndUploadKeyPair(uid);
       }
-
       userInfo.style.display = "block";
       userEmail.innerText = `Logged in as: ${user.email}`;
 

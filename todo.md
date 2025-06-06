@@ -45,8 +45,8 @@
 - [ ] Encrypt and send messages
 - [ ] Listen for new messages
 - [ ] Decrypt received messages
-- [ ] Generate/store keypair
-- [ ] Upload public key to Firebase
+- [x] Generate/store keypair
+- [x] Upload public key to Firebase
 - [ ] Get public key of other user
 
 ### 🎥 Video Calling (WebRTC + Firebase)
