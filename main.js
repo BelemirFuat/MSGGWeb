@@ -70,9 +70,18 @@ logoutBtn.onclick = () => {
 };
 
 // Handle authentication state changes
+// Handle authentication state changes
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     try {
+      const uid = user.uid;
+
+      // Generate and upload the key pair if not already done
+      const userDoc = await getDoc(doc(db, "users", uid));
+      if (!userDoc.exists() || !userDoc.data().publicKey) {
+        await generateAndUploadKeyPair(uid);
+      }
+
       userInfo.style.display = "block";
       userEmail.innerText = `Logged in as: ${user.email}`;
 

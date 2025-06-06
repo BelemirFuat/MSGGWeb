@@ -32,12 +32,12 @@
 ## 🌐 Web Client (HTML + JS + Firebase)
 
 ### 🔐 Authentication
-- [ ] Register user (via Firebase SDK or backend)
-- [ ] Login
-- [ ] Session/token handling
+- [x] Register user (via Firebase SDK or backend)
+- [x] Login
+- [x] Session/token handling
 
 ### 📇 Contacts
-- [ ] Display contact list
+- [x] Display contact list
 - [ ] Show online/offline status (optional)
 
 ### 💬 Messaging (End-to-End Encrypted)
